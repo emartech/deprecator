@@ -1,10 +1,9 @@
 'use strict';
 
-const
-  Koa = require('koa'),
-  serve = require('koa-static'),
-  bodyParser = require('koa-bodyparser'),
-  config = require('./config'),
+const Koa = require('koa');
+const serve = require('koa-static');
+const bodyParser = require('koa-bodyparser');
+const config = require('./config');
 
 const app = new Koa();
 
