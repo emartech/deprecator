@@ -1,0 +1,32 @@
+{
+  "name": "deprecator",
+  "version": "1.0.0",
+  "description": "Dr. Deprecator says: bring out your dead!",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "watch": "node_modules/nodemon/bin/nodemon.js server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emartech/deprecator.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/emartech/deprecator/issues"
+  },
+  "homepage": "https://deprecator.herokuapp.com",
+  "dependencies": {
+    "axios": "^0.17.1",
+    "body-parser": "^1.18.2",
+    "koa-bodyparser": "^4.2.0",
+    "koa-router": "^7.3.0",
+    "koa-static": "^4.0.2",
+    "mongoose": "^4.13.5"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  }
+}
