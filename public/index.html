@@ -30,7 +30,37 @@
       with the total number of deprecated lines. Eg. if you met the goal on December 4, 7 and 14
       by deleting 5, 10 and 25 lines of code respectively, your total score is <code>3 * 40 = 120</code>.</p>
     <p>Breaking anything in production results in disqualification.</p>
+    <h2>Recent Deprecations</h2>
+    <div id="recent-app">
+      <div v-for="deprecation in deprecations">
+        <img v-bind:src="deprecation.author.avatar_url" v-bind:title="deprecation.author_name" style="width: 50px;">
+        <div style="display: inline-block">
+          <div><a v-bind:href="deprecation.html_url">{{deprecation.msg}}</a></div>
+          <div>{{deprecation.date.substring(0,10)}}</div>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <script src="https://unpkg.com/vue"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.3.4"></script>
+  <script>
+    var app = new Vue({
+      el: '#recent-app',
+      data: {
+        deprecations: []
+      },
+      created: function() {
+
+        this.$http.get('/deprecations/')
+          .then(resp => {
+            this.deprecations = resp.data;
+          })
+          .catch(e => { console.log(e) });
+      }
+    });
+  </script>
+
 </body>
 </html>
 

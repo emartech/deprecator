@@ -18,7 +18,10 @@ const deprecations = async (ctx, next) => {
 
   ctx.body = _.head(response.data.items, 10).map(c => ({
     url: c.url,
+    html_url: c.html_url,
+    sha: c.sha,
     date: c.commit.author.date,
+    author_name: c.commit.author.name,
     msg: c.commit.message,
     author: _.pick(c.author, 'login', 'avatar_url'),
   }));
