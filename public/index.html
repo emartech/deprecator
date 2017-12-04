@@ -32,10 +32,10 @@
     <p>Breaking anything in production results in disqualification.</p>
     <h2>Recent Deprecations</h2>
     <div id="recent-app">
-      <div v-for="deprecation in deprecations">
+      <div v-for="deprecation in deprecations" v-if="deprecation.win > 0" style="padding: 5px">
         <img v-bind:src="deprecation.author.avatar_url" v-bind:title="deprecation.author_name" style="width: 50px;">
         <div style="display: inline-block">
-          <div><a v-bind:href="deprecation.html_url">{{deprecation.msg}}</a></div>
+          <div>deprecated <span class="e-label e-label-primary">{{deprecation.win}}</span> lines in <a v-bind:href="deprecation.html_url">{{deprecation.msg}}</a></div>
           <div>{{deprecation.date.substring(0,10)}}</div>
         </div>
       </div>
@@ -54,7 +54,20 @@
 
         this.$http.get('/deprecations/')
           .then(resp => {
-            this.deprecations = resp.data;
+            this.deprecations = resp.data.map(dep => {
+              dep.win = 0;
+              return dep;
+            });
+            this.deprecations.forEach(dep => {
+              console.log('getting', '/win/' + dep.sha)
+              this.$http.get('/win/' + dep.sha)
+                .then(resp => {
+              console.log('got', resp.data)
+
+                  dep.win = resp.data.stats.win;
+                  console.log(dep)
+                })
+            });
           })
           .catch(e => { console.log(e) });
       }
