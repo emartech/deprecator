@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Dr. Deprecator</title>
+  <title>🗑 Dr. Deprecator️</title>
   <link rel="stylesheet" href="https://redirector.eservice.emarsys.net/ui/latest/css/app.css"/>
   <script src="https://redirector.eservice.emarsys.net/ui/latest/js/app.js"></script>
 </head>
 <body>
   <div class="e-container e-container-fullwidth">
-    <h1>Dr. Deprecator</h1>
+    <h1>Dr. Deprecator 🗑</h1>
     <blockquote>
       <em>"One of my most productive days was throwing away 1,000 lines of code."</em>
        - <a href="http://genius.cat-v.org/ken-thompson/">Ken Thompson</a>
@@ -20,18 +20,18 @@
       <em>"Bring out your dead!"</em>
        - <a href="https://www.youtube.com/watch?v=grbSQ6O6kbs">Monty Python</a>
     </blockquote>
-    <h2>Deprecember Challenge</h2>
+    <h2>Deprecember Challenge 🔥 </h2>
     <p>During the month of December, deprecate at least as many lines of code as the current day of month.
       Eg. on the 4th of December you must delete at least 4 lines of code.</p>
     <p>Deprecation commits must be sent in separate changesets with a commit message
-      including the word <strong>'deprecate'</strong>.
-      The total number of deprecated lines equals <code>deletions - insertions</code>, so moving stuff around doesn't count.</p>
+      including the word <strong>'deprecate'</strong>. We recommend finishing your commit message with the <strong>#deprecate</strong> hashtag.
+      The total number of deprecated lines equals <code>deletions - additions</code>, so moving stuff around doesn't count.</p>
     <p>Your total score is calculated by multiplying the number of days where you met the goal
       with the total number of deprecated lines. Eg. if you met the goal on December 4, 7 and 14
       by deleting 5, 10 and 25 lines of code respectively, your total score is <code>3 * 40 = 120</code>.</p>
-    <p>Breaking anything in production results in disqualification.</p>
-    <h2>Recent Deprecations</h2>
-    <div id="recent-app">
+    <p>If you deprecate so hard you break something in production, you are disqualified.</p>
+    <h2>Recent Deprecators 🏅 </h2>
+    <div id="recent-app" style="display: none">
       <div v-for="deprecation in deprecations" v-if="deprecation.win > 0" style="padding: 5px">
         <img v-bind:src="deprecation.author.avatar_url" v-bind:title="deprecation.author_name" style="width: 50px;">
         <div style="display: inline-block">
@@ -50,8 +50,8 @@
       data: {
         deprecations: []
       },
-      created: function() {
-
+      created: function(el) {
+        document.getElementById('recent-app').style.display = 'block';
         this.$http.get('/deprecations/')
           .then(resp => {
             this.deprecations = resp.data.map(dep => {
