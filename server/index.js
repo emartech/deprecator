@@ -16,6 +16,7 @@ app.on('error', (err, ctx) => {
 
 const router = new Router();
 router.get('/deprecations', github.deprecations);
+router.get('/win/:sha', github.win);
 
 app.use(serve('public'))
 app.use(router.routes());
