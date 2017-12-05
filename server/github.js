@@ -59,6 +59,7 @@ const win = async (ctx, next) => {
   commit.stats = response.data.stats;
   commit.stats.win = commit.stats.deletions - commit.stats.additions
   ctx.body = commit;
+  ctx.set('Cache-Control', 'public, max-age=86400');
   ctx.response.status = 200;
 }
 
